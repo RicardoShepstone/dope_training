@@ -494,8 +494,10 @@ class ObjectDetector(object):
             for j in range(tensor.size()[0]):
                 belief = tensor[j].clone()
                 if norm_belief:
-                    belief -= float(torch.min(belief)[0].data.cpu().numpy())
-                    belief /= float(torch.max(belief)[0].data.cpu().numpy())
+                    #belief -= float(torch.min(belief)[0].data.cpu().numpy()) # asi no funciona, se tiene que normalizar como en el entrenamiento
+                    #belief /= float(torch.max(belief)[0].data.cpu().numpy())
+                    belief -= float(torch.min(belief).item())
+                    belief /= float(torch.max(belief).item())
 
                 belief = (
                     upsampling(belief.unsqueeze(0).unsqueeze(0))
@@ -506,9 +508,9 @@ class ObjectDetector(object):
                 belief = torch.clamp(belief, 0, 1).cpu()
                 belief = torch.cat(
                     [
-                        belief.unsqueeze(0) + in_img[:, :, 0],
-                        belief.unsqueeze(0) + in_img[:, :, 1],
-                        belief.unsqueeze(0) + in_img[:, :, 2],
+                        belief.unsqueeze(0), #+ in_img[:, :, 0], quitar comentario para que se superponga el mapa de creencia a la imagen original
+                        belief.unsqueeze(0), #+ in_img[:, :, 1],
+                        belief.unsqueeze(0), #+ in_img[:, :, 2],
                     ]
                 ).unsqueeze(0)
                 belief = torch.clamp(belief, 0, 1)

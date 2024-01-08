@@ -923,7 +923,7 @@ class Draw(object):
     def draw_text(self, point, text, text_color):
         """Draws text on image"""
         if point is not None:
-            self.draw.text(point, text, fill=text_color, font=ImageFont.truetype("misc/arial.ttf", self.width // 50))
+            self.draw.text(point, text, fill=text_color, font=ImageFont.truetype("/usr/share/fonts/truetype/freefont/FreeMono.ttf", self.width // 50))
 
     def draw_cube(self, points, color=(0, 255, 0)):
         """

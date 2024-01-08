@@ -3,6 +3,7 @@ downscale_height: 512      # if the input image is larger than this, scale it do
 
 # Cuboid dimension in cm x,y,z
 dimensions: {
+    "05_02_03_04_02_10_connector_grey": [8.75,7.21426,1.625],
     "003_cracker_box": [16.403600692749023,21.343700408935547,7.179999828338623],
     "009_gelatin_box": [8.918299674987793, 7.311500072479248, 2.9983000755310059],
     "010_potted_meat_can": [10.164673805236816,8.3542995452880859,5.7600898742675781],
@@ -13,6 +14,9 @@ dimensions: {
     "071_nine_hole_peg_test": [12.6,3.9,12.6],
     '008_pudding_box':[49.47199821472168, 29.923000335693359, 83.498001098632812],
     "Ketchup" : [ 14.860799789428711, 4.3368000984191895, 6.4513998031616211 ],
+    "005_clampconnector": [9.267730712890625,17.625339508056641,4.5134143829345703],
+    "05_02_03_04_02_10_connector": [8.75,7.21426,1.625],
+    "001_object1": [8.75,7.21426,1.625]
 }
 
 class_ids: {
@@ -26,6 +30,10 @@ class_ids: {
     "071_nine_hole_peg_test": 8,
     '008_pudding_box': 10,
     'Ketchup': 11,
+    "05_02_03_04_02_10_connector_grey": 12,
+    "005_clampconnector": 13,
+    "05_02_03_04_02_10_connector": 14,
+    "001_object1": 15
 }
 
 draw_colors: {
@@ -39,10 +47,14 @@ draw_colors: {
     "071_nine_hole_peg_test": [232, 222, 12],  # yellow
     "008_pudding_box": [255,0,0],
     "Ketchup": [0x76,0xb9,0x00],          # NVIDIA green
+    "05_02_03_04_02_10_connector_grey": [255, 13, 128],
+    "005_clampconnector": [255, 13, 128],
+    "05_02_03_04_02_10_connector": [13, 255, 128],
+    "001_object1": [0,0,0]
 }
 
 # Config params for DOPE
 thresh_angle: 0.5
 thresh_map: 0.01
-sigma: 3
-thresh_points: 0.0
+sigma: 3 # default 3
+thresh_points: 0.0 # default 0.0
