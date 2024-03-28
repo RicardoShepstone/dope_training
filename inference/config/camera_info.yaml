@@ -1,5 +1,5 @@
 image_width: 512 # default: 910
-image_height: 512
+image_height: 512 # default: 512
 camera_name: dope_webcam_0
 distortion_model: plumb_bob
 distortion_coefficients:
@@ -16,7 +16,25 @@ rectification_matrix:
 #   data: [768.16058349609375, 0, 256, 0, 0, 768.16058349609375, 256, 0, 0, 0, 1, 0]
 
 # Para nuestro caso:
+# projection_matrix:
+#   rows: 3
+#   cols: 4
+#   data: [2324.1, 0, 258.9158, 0, 0, 2327.5, 235.9483, 0, 0, 0, 1, 0]
+
+# Para connector_black vimba camera:
+# projection_matrix:
+#   rows: 3
+#   cols: 4
+#   data: [2342.5825405263163, 0, 362.48855952480534, 0, 0, 2344.474111175245, 359.46777382329554, 0, 0, 0, 1, 0]
+
+# Para connector_black phone camera, parámetros de Matlab:
+# projection_matrix:
+#   rows: 3
+#   cols: 4
+#   data: [1804.4412, 0, 269.2435, 0, 0, 1802.1498, 305.3389, 0, 0, 0, 1, 0]
+
+# Para connector_black vimba camera, paráteros de Matlab:
 projection_matrix:
   rows: 3
   cols: 4
-  data: [2324.1, 0, 258.9158, 0, 0, 2327.5, 235.9483, 0, 0, 0, 1, 0]
+  data: [2351.1, 0, 265.5207, 0, 0, 2354.5, 251.2709, 0, 0, 0, 1, 0]
