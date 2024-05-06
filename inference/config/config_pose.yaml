@@ -17,7 +17,7 @@ dimensions: {
     "005_clampconnector": [9.267730712890625,17.625339508056641,4.5134143829345703],
     "05_02_03_04_02_10_connector": [8.75,7.21426,1.625],
     "001_object1": [8.75,7.21426,1.625],
-    "05_02_03_04_02_10_connector_black": [8.75,7.21426,1.625],
+    "05_02_03_04_02_10_connector_black": [8.75,7.21426,1.625] # Las dimensiones están bien comprobado en 3D viewer
 }
 
 class_ids: {

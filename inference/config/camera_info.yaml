@@ -15,13 +15,13 @@ rectification_matrix:
 #   cols: 4
 #   data: [768.16058349609375, 0, 256, 0, 0, 768.16058349609375, 256, 0, 0, 0, 1, 0]
 
-# Para nuestro caso:
+# Para nuestro caso (tambien para la red de vimba corrected_1_2 que funcionó bien en connector_black):
 # projection_matrix:
 #   rows: 3
 #   cols: 4
 #   data: [2324.1, 0, 258.9158, 0, 0, 2327.5, 235.9483, 0, 0, 0, 1, 0]
 
-# Para connector_black vimba camera:
+# Para connector_black vimba camera parametros opencv:
 # projection_matrix:
 #   rows: 3
 #   cols: 4
