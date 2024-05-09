@@ -199,7 +199,7 @@ if __name__ == "__main__":
                 best_index = None
 
                 for candi_gt in candidates:
-
+                    print(candi_gt)
                     # compute the add
                     i_gt, pose_gt, name_gt = candi_gt
 
@@ -293,6 +293,11 @@ if __name__ == "__main__":
                         dist /= 9
 
                     else:
+                        csv_file_gt = open(os.path.join(opt.outf, f"{f_i}-vertices_gt.csv"), "w+")
+                        csv_file_pred = open(os.path.join(opt.outf, f"{f_i}-vertices_pred.csv"), "w+")
+                        csv_writer_gt = csv.writer(csv_file_gt)
+                        csv_writer_pred = csv.writer(csv_file_pred)
+
                         dist = []
                         vertices = visii_gt.get_mesh().get_vertices()
                         for i in range(len(vertices)):
@@ -302,12 +307,21 @@ if __name__ == "__main__":
                             p0 = (
                                 visii_gt.get_transform().get_local_to_world_matrix() * v
                             )
+                            csv_writer_gt.writerow(p0)
                             p1 = (
                                 visii_gu.get_transform().get_local_to_world_matrix() * v
                             )
+                            csv_writer_pred.writerow(p1)
                             dist.append(visii.distance(p0, p1))
+                        
+                        csv_file_gt.close()
+                        csv_file_pred.close()
 
+                        dist_std = np.std(dist)
                         dist = np.mean(dist)
+
+                        print(dist)
+                        print(dist_std)
 
                     if dist < best_dist:
                         best_dist = dist
