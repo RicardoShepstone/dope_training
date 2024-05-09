@@ -126,9 +126,9 @@ def loadmodels(root, cuboid, suffix=""):
                 explore(path_entry)
         else:
             path_obj = os.path.join(path, "textured_simple.obj")
-            path_tex = os.path.join(path, "texture_map.png")
+            # path_tex = os.path.join(path, "texture_map.png")
 
-            if os.path.exists(path_obj) and os.path.exists(path_tex):
+            if os.path.exists(path_obj): # and os.path.exists(path_tex):
                 path = path.rstrip("/")
                 model_name = path.split("/")[-1]
 
@@ -137,7 +137,7 @@ def loadmodels(root, cuboid, suffix=""):
                 models[model_name] = create_obj(
                     name=model_name + suffix,
                     path_obj=path_obj,
-                    path_tex=path_tex,
+                    # path_tex=path_tex,
                     scale=0.01,
                 )
 

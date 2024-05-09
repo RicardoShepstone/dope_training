@@ -211,7 +211,7 @@ if __name__ == "__main__":
                     # name_pred should match the names of the folders containing 3d models
                     visii_gu = meshes_gu[name_pred]
 
-                    visii_gu.get_transform().set_position(pose_mesh["position"])
+                    visii_gu.get_transform().set_position(pose_mesh["position"]/100) # en el vicon te dan las distancias en metros, y la red en cm
                     visii_gu.get_transform().set_rotation(pose_mesh["rotation"])
 
                     if opt.adds and opt.cuboid:
@@ -262,6 +262,12 @@ if __name__ == "__main__":
                                 np.array(points_gt), np.array(points_gu), p=2
                             ).min(axis=1)
                         )
+                        dist_std = np.std(spatial.distance_matrix(
+                                np.array(points_gt), np.array(points_gu), p=2
+                            ).min(axis=1)
+                            )
+                        print(dist)
+                        print(dist_std)
 
                     elif not opt.adds and opt.cuboid:
                         dist = 0
