@@ -20,8 +20,8 @@
 
 for exp in {1..12..1}
     do
-    for epoch in {121..140..1}
+    for epoch in {40..140..1}
         do
-        python inference_beliefmap.py --weights ../output/weights/connector_black/corrected_1_2/net_epoch_$epoch.pth --data ../../Documents/Generated_data/connector_black/recorded_data/vicon-FixedPosExp-vimba/selected_renamed_images/connector_black_vicon_exp_position$exp/ --object 05_02_03_04_02_10_connector_black --outf ../output/inference_results/connector_black/corrected_1_2_vimba/vicon-FixedPosExp-vimba_renamed/connector_black_vicon_exp_position$exp/ --ext png
+        python inference.py --weights ../output/weights/connector_black/corrected_1_2/net_epoch_$epoch.pth --data ../../Documents/Generated_data/connector_black/recorded_data/vicon-FixedPosExp-vimba/selected_renamed_images/connector_black_vicon_exp_position$exp/ --object 05_02_03_04_02_10_connector_black --outf ../output/inference_results/connector_black/corrected_1_2_vimba/vicon-FixedPosExp-vimba_renamed_CorrectedCal/connector_black_vicon_exp_position$exp/ --ext png
     done
 done

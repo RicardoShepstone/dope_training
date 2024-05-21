@@ -155,9 +155,9 @@ if __name__ == "__main__":
                             float(obj_pred["quaternion_xyzw"][0]),
                             float(obj_pred["quaternion_xyzw"][1]),
                             float(obj_pred["quaternion_xyzw"][2]),
-                        )
-                        * visii.angleAxis(1.57, visii.vec3(1, 0, 0))
-                        * visii.angleAxis(1.57, visii.vec3(0, 0, 1)),
+                        ),
+                        #* visii.angleAxis(1.57, visii.vec3(1, 0, 0))
+                        #* visii.angleAxis(1.57, visii.vec3(0, 0, 1)),
                         "position": visii.vec3(
                             float(str(obj_pred["location"][0])) / 100.0,
                             float(str(obj_pred["location"][1])) / 100.0,
@@ -172,9 +172,9 @@ if __name__ == "__main__":
                             float(obj_pred["quaternion_xyzw"][0]),
                             float(obj_pred["quaternion_xyzw"][1]),
                             float(obj_pred["quaternion_xyzw"][2]),
-                        )
-                        * visii.angleAxis(1.57, visii.vec3(1, 0, 0))
-                        * visii.angleAxis(1.57, visii.vec3(0, 0, 1)),
+                        ),
+                        # * visii.angleAxis(1.57, visii.vec3(1, 0, 0))
+                        # * visii.angleAxis(1.57, visii.vec3(0, 0, 1)),
                         "position": visii.vec3(
                             1000000,
                             1000000,
@@ -199,7 +199,7 @@ if __name__ == "__main__":
                 best_index = None
 
                 for candi_gt in candidates:
-                    print(candi_gt)
+                
                     # compute the add
                     i_gt, pose_gt, name_gt = candi_gt
 
@@ -207,12 +207,26 @@ if __name__ == "__main__":
 
                     visii_gt.get_transform().set_position(pose_gt["position"])
                     visii_gt.get_transform().set_rotation(pose_gt["rotation"])
-
+                    # print(f'ground truth rot{pose_gt["rotation"]}')
+                    print(f'ground truth loc: {pose_gt["position"]}')
+                    
                     # name_pred should match the names of the folders containing 3d models
                     visii_gu = meshes_gu[name_pred]
 
                     visii_gu.get_transform().set_position(pose_mesh["position"]/100) # en el vicon te dan las distancias en metros, y la red en cm
                     visii_gu.get_transform().set_rotation(pose_mesh["rotation"])
+                    # print(f'ground truth rot{pose_mesh["rotation"]}')
+                    print(f'Estimation loc: {pose_mesh["position"]/100}')
+
+                    # Guardamos los datos de localización en un csv
+                    csv_file_gt_loc = open(os.path.join(opt.outf, f"{f_i}-loc_gt.csv"), "w+")
+                    csv_file_pred_loc = open(os.path.join(opt.outf, f"{f_i}-loc_pred.csv"), "w+")
+                    csv_writer_gt_loc = csv.writer(csv_file_gt_loc)
+                    csv_writer_pred_loc = csv.writer(csv_file_pred_loc)
+                    csv_writer_gt_loc.writerow([pose_gt["position"][0], pose_gt["position"][1], pose_gt["position"][2]])
+                    csv_writer_pred_loc.writerow([pose_mesh["position"][0]/100, pose_mesh["position"][1]/100, pose_mesh["position"][2]/100])
+                    csv_file_gt_loc.close()
+                    csv_file_pred_loc.close()
 
                     if opt.adds and opt.cuboid:
                         dist = 0
@@ -293,8 +307,8 @@ if __name__ == "__main__":
                         dist /= 9
 
                     else:
-                        csv_file_gt = open(os.path.join(opt.outf, f"{f_i}-vertices_gt.csv"), "w+")
-                        csv_file_pred = open(os.path.join(opt.outf, f"{f_i}-vertices_pred.csv"), "w+")
+                        csv_file_gt = open(os.path.join(opt.outf, f"{f_i}-test-vertices_gt.csv"), "w+")
+                        csv_file_pred = open(os.path.join(opt.outf, f"{f_i}-test-vertices_pred.csv"), "w+")
                         csv_writer_gt = csv.writer(csv_file_gt)
                         csv_writer_pred = csv.writer(csv_file_pred)
 
@@ -317,21 +331,22 @@ if __name__ == "__main__":
                         csv_file_gt.close()
                         csv_file_pred.close()
 
-                        dist_std = np.std(dist)
+                        # dist_std = np.std(dist)
                         dist = np.mean(dist)
 
-                        print(dist)
-                        print(dist_std)
-
+                        # print(dist)
+                        # print(dist_std)
+                    
                     if dist < best_dist:
                         best_dist = dist
                         best_index = i_gt
-
+            
                 if best_index is not None:
                     if not name_pred in adds_objects.keys():
                         adds_objects[name_pred] = []
                     adds_all.append(best_dist)
                     adds_objects[name_pred].append(best_dist)
+                
 
         # Compute Metrics
         for name in adds_objects:
