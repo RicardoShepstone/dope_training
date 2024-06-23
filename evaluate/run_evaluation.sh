@@ -34,12 +34,29 @@
 #     done
 
 
-for dirname in ../../Documents/Generated_data/connector_black_fixedpose/recorded_data/phone_images/dataset/test/*
-    do
-    for epoch in {40..140..1}
-        do
-        python evaluate.py --data_prediction ../output/inference_results/connector_black_fixedpose/corrected_1_2_vimba/test/${dirname##*/}/net_epoch_$epoch \
-        --data ../../Documents/Generated_data/connector_black_fixedpose/recorded_data/vimba_images/vicon_gt_renamed/test/${dirname##*/}/ \
-        --outf ../output/evaluation_results/connector_black_fixedpose/corrected_1_2_vimba/test/${dirname##*/}/net_epoch_$epoch 
-    done
-done
+
+# fixed position experiment
+
+# for dirname in ../../Documents/Generated_data/connector_black_fixedpose/recorded_data/vimba_images/dataset/test/*
+#     do
+#     for epoch in {40..140..1}
+#         do
+#         python evaluate.py --data_prediction ../output/inference_results/connector_black_fixedpose/corrected_1_2_vimba/test/${dirname##*/}/net_epoch_$epoch \
+#         --data ../../Documents/Generated_data/connector_black_fixedpose/recorded_data/vimba_images/vicon_gt_renamed/test/${dirname##*/}/ \
+#         --outf ../output/evaluation_results/connector_black_fixedpose/corrected_1_2_vimba/test/${dirname##*/}/net_epoch_$epoch 
+#     done
+# done
+
+# for dirname in ../../Documents/Generated_data/connector_black_fixedpose/recorded_data/phone_images/dataset/test/*
+#     do
+#     for epoch in {40..140..1}
+#         do
+#         python evaluate.py --data_prediction ../output/inference_results/connector_black_fixedpose/corrected_1_2_vimba/test/${dirname##*/}/net_epoch_$epoch \
+#         --data ../../Documents/Generated_data/connector_black_fixedpose/recorded_data/vimba_images/vicon_gt_renamed/test/${dirname##*/}/ \
+#         --outf ../output/evaluation_results/connector_black_fixedpose/corrected_1_2_vimba/test/${dirname##*/}/net_epoch_$epoch 
+#     done
+# done
+
+
+# rad exp
+

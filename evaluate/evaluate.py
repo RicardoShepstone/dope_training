@@ -126,9 +126,9 @@ if __name__ == "__main__":
                                 obj["quaternion_xyzw"][2],
                             ),
                             "position": visii.vec3(
-                                obj["location"][0], # / 100, # en el vicon te dan las distancias en metros, y la red en cm por eso se comenta
-                                obj["location"][1], # / 100,
-                                obj["location"][2], # / 100,
+                                obj["location"][0] / 100, # en el vicon te dan las distancias en metros, y la red en cm por eso se comenta
+                                obj["location"][1] / 100,
+                                obj["location"][2] / 100,
                             ),
                         },
                     ]
@@ -155,9 +155,9 @@ if __name__ == "__main__":
                             float(obj_pred["quaternion_xyzw"][0]),
                             float(obj_pred["quaternion_xyzw"][1]),
                             float(obj_pred["quaternion_xyzw"][2]),
-                        ),
-                        #* visii.angleAxis(1.57, visii.vec3(1, 0, 0))
-                        #* visii.angleAxis(1.57, visii.vec3(0, 0, 1)),
+                        )
+                        * visii.angleAxis(1.57, visii.vec3(1, 0, 0)) # comentar si la prueba es con el vicon y ajustar las comas
+                        * visii.angleAxis(1.57, visii.vec3(0, 0, 1)),
                         "position": visii.vec3(
                             float(str(obj_pred["location"][0])) / 100.0,
                             float(str(obj_pred["location"][1])) / 100.0,
@@ -172,9 +172,9 @@ if __name__ == "__main__":
                             float(obj_pred["quaternion_xyzw"][0]),
                             float(obj_pred["quaternion_xyzw"][1]),
                             float(obj_pred["quaternion_xyzw"][2]),
-                        ),
-                        # * visii.angleAxis(1.57, visii.vec3(1, 0, 0))
-                        # * visii.angleAxis(1.57, visii.vec3(0, 0, 1)),
+                        )
+                        * visii.angleAxis(1.57, visii.vec3(1, 0, 0)) # aquí también
+                        * visii.angleAxis(1.57, visii.vec3(0, 0, 1)),
                         "position": visii.vec3(
                             1000000,
                             1000000,
