@@ -18,10 +18,34 @@
 #     done
 # done
 
-for exp in {1..12..1}
-    do
-    for epoch in {40..140..1}
-        do
-        python inference.py --weights ../output/weights/connector_black/corrected_1_2/net_epoch_$epoch.pth --data ../../Documents/Generated_data/connector_black/recorded_data/vicon-FixedPosExp-vimba/selected_renamed_images/connector_black_vicon_exp_position$exp/ --object 05_02_03_04_02_10_connector_black --outf ../output/inference_results/connector_black/corrected_1_2_vimba/vicon-FixedPosExp-vimba_renamed_CorrectedCal/connector_black_vicon_exp_position$exp/ --ext png
-    done
-done
+# for exp in {1..12..1}
+#     do
+#     for epoch in {40..140..1}
+#         do
+#         python inference.py --weights ../output/weights/connector_black/corrected_1_2/net_epoch_$epoch.pth \
+#         --data ../../Documents/Generated_data/connector_black/recorded_data/vicon-FixedPosExp-vimba/selected_renamed_images/connector_black_vicon_exp_position$exp/ \
+#         --object 05_02_03_04_02_10_connector_black \
+#         --outf ../output/inference_results/connector_black/corrected_1_2_vimba/vicon-FixedPosExp-vimba_renamed_CorrectedCal/connector_black_vicon_exp_position$exp/ --ext png
+#     done
+# done
+
+
+# fixed position experiment
+
+# for dirname in ../../Documents/Generated_data/connector_black_fixedpose/recorded_data/phone_images/dataset/test/*
+#     do
+#     for epoch in {40..140..1}
+#         do
+#         python inference_beliefmap.py --weights ../output/weights/connector_black_fixedpose/corrected_1_2_phone/net_epoch_$epoch.pth \
+#         --data ../../Documents/Generated_data/connector_black_fixedpose/recorded_data/phone_images/dataset/test/${dirname##*/}/ \
+#         --object 05_02_03_04_02_10_connector_black \
+#         --outf ../output/inference_results/connector_black_fixedpose/corrected_1_2_phone/test/${dirname##*/}/ --ext jpg
+#     done
+# done
+
+
+# rad exp
+python inference_beliefmap.py --weights ../output/weights/connector_black_fixedpose/corrected_1_2_vimba/net_epoch_58.pth \
+--data ../../Documents/Generated_data/connector_black_fixedpose/rad_exp/test/ \
+--object 05_02_03_04_02_10_connector_black \
+--outf ../output/inference_results/connector_black_fixedpose/rad_exp/no_rad/ --ext png

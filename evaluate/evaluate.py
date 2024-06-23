@@ -126,9 +126,9 @@ if __name__ == "__main__":
                                 obj["quaternion_xyzw"][2],
                             ),
                             "position": visii.vec3(
-                                obj["location"][0] / 100,
-                                obj["location"][1] / 100,
-                                obj["location"][2] / 100,
+                                obj["location"][0], # / 100, # en el vicon te dan las distancias en metros, y la red en cm por eso se comenta
+                                obj["location"][1], # / 100,
+                                obj["location"][2], # / 100,
                             ),
                         },
                     ]
@@ -213,20 +213,20 @@ if __name__ == "__main__":
                     # name_pred should match the names of the folders containing 3d models
                     visii_gu = meshes_gu[name_pred]
 
-                    visii_gu.get_transform().set_position(pose_mesh["position"]/100) # en el vicon te dan las distancias en metros, y la red en cm
+                    visii_gu.get_transform().set_position(pose_mesh["position"]) 
                     visii_gu.get_transform().set_rotation(pose_mesh["rotation"])
                     # print(f'ground truth rot{pose_mesh["rotation"]}')
-                    print(f'Estimation loc: {pose_mesh["position"]/100}')
+                    print(f'Estimation loc: {pose_mesh["position"]}')
 
-                    # Guardamos los datos de localización en un csv
-                    csv_file_gt_loc = open(os.path.join(opt.outf, f"{f_i}-loc_gt.csv"), "w+")
-                    csv_file_pred_loc = open(os.path.join(opt.outf, f"{f_i}-loc_pred.csv"), "w+")
-                    csv_writer_gt_loc = csv.writer(csv_file_gt_loc)
-                    csv_writer_pred_loc = csv.writer(csv_file_pred_loc)
-                    csv_writer_gt_loc.writerow([pose_gt["position"][0], pose_gt["position"][1], pose_gt["position"][2]])
-                    csv_writer_pred_loc.writerow([pose_mesh["position"][0]/100, pose_mesh["position"][1]/100, pose_mesh["position"][2]/100])
-                    csv_file_gt_loc.close()
-                    csv_file_pred_loc.close()
+                    # Guardamos los datos de localización en un csv si queremos analizarlos
+                    # csv_file_gt_loc = open(os.path.join(opt.outf, f"{f_i}-loc_gt.csv"), "w+")
+                    # csv_file_pred_loc = open(os.path.join(opt.outf, f"{f_i}-loc_pred.csv"), "w+")
+                    # csv_writer_gt_loc = csv.writer(csv_file_gt_loc)
+                    # csv_writer_pred_loc = csv.writer(csv_file_pred_loc)
+                    # csv_writer_gt_loc.writerow([pose_gt["position"][0], pose_gt["position"][1], pose_gt["position"][2]])
+                    # csv_writer_pred_loc.writerow([pose_mesh["position"][0]/100, pose_mesh["position"][1]/100, pose_mesh["position"][2]/100])
+                    # csv_file_gt_loc.close()
+                    # csv_file_pred_loc.close()
 
                     if opt.adds and opt.cuboid:
                         dist = 0
@@ -307,10 +307,10 @@ if __name__ == "__main__":
                         dist /= 9
 
                     else:
-                        csv_file_gt = open(os.path.join(opt.outf, f"{f_i}-test-vertices_gt.csv"), "w+")
-                        csv_file_pred = open(os.path.join(opt.outf, f"{f_i}-test-vertices_pred.csv"), "w+")
-                        csv_writer_gt = csv.writer(csv_file_gt)
-                        csv_writer_pred = csv.writer(csv_file_pred)
+                        # csv_file_gt = open(os.path.join(opt.outf, f"{f_i}-test-vertices_gt.csv"), "w+")
+                        # csv_file_pred = open(os.path.join(opt.outf, f"{f_i}-test-vertices_pred.csv"), "w+")
+                        # csv_writer_gt = csv.writer(csv_file_gt)
+                        # csv_writer_pred = csv.writer(csv_file_pred)
 
                         dist = []
                         vertices = visii_gt.get_mesh().get_vertices()
@@ -333,7 +333,8 @@ if __name__ == "__main__":
 
                         # dist_std = np.std(dist)
                         dist = np.mean(dist)
-
+                        
+                        # imprimimos mean y std para analizar las distancias
                         # print(dist)
                         # print(dist_std)
                     

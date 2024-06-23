@@ -34,7 +34,19 @@ rectification_matrix:
 #   data: [1804.4412, 0, 269.2435, 0, 0, 1802.1498, 305.3389, 0, 0, 0, 1, 0]
 
 # Para connector_black vimba camera, paráteros de Matlab:
+# projection_matrix:
+#   rows: 3
+#   cols: 4
+#   data: [2351.1, 0, 265.5207, 0, 0, 2354.5, 251.2709, 0, 0, 0, 1, 0]
+
+# phone camera, parámetros Matlab para FixedPoseExp
 projection_matrix:
   rows: 3
   cols: 4
-  data: [2351.1, 0, 265.5207, 0, 0, 2354.5, 251.2709, 0, 0, 0, 1, 0]
+  data: [2369.3228, 0, 269.2435, 0, 0, 2371.6984, 260.447, 0, 0, 0, 1, 0]
+
+# vimba camera, parámetros Matlab para FixedPoseExp con la segunda calibración
+# projection_matrix:
+#   rows: 3
+#   cols: 4
+#   data: [2102.3358, 0, 241.81069, 0, 0, 2097.0021, 234.29657, 0, 0, 0, 1, 0]
