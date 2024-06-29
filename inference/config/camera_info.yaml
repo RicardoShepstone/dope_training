@@ -21,11 +21,6 @@ rectification_matrix:
 #   cols: 4
 #   data: [2324.1, 0, 258.9158, 0, 0, 2327.5, 235.9483, 0, 0, 0, 1, 0]
 
-# Para connector_black vimba camera parametros opencv:
-# projection_matrix:
-#   rows: 3
-#   cols: 4
-#   data: [2342.5825405263163, 0, 362.48855952480534, 0, 0, 2344.474111175245, 359.46777382329554, 0, 0, 0, 1, 0]
 
 # Para connector_black phone camera, parámetros de Matlab:
 # projection_matrix:

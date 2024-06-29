@@ -275,7 +275,7 @@ net = torch.nn.parallel.DistributedDataParallel(
 
 if opt.pretrained:
     if opt.net_path is not None:
-        net.load_state_dict(torch.load(opt.net))
+        net.load_state_dict(torch.load(opt.net_path))
     else:
         print("Error: Did not specify path to pretrained weights.")
         quit()
@@ -449,7 +449,7 @@ def _testnetwork(epoch, test_loader):
 
                 if local_rank == 0:
 
-                    for i_output in range(2): # cambiar a range(1)
+                    for i_output in range(1): # cambiar a range(1)
 
                         # input images
                         writer.add_image(

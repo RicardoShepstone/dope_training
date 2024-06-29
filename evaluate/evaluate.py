@@ -126,9 +126,9 @@ if __name__ == "__main__":
                                 obj["quaternion_xyzw"][2],
                             ),
                             "position": visii.vec3(
-                                obj["location"][0] / 100, # en el vicon te dan las distancias en metros, y la red en cm por eso se comenta
-                                obj["location"][1] / 100,
-                                obj["location"][2] / 100,
+                                obj["location"][0],# / 100, # en el vicon te dan las distancias en metros, y la red en cm por eso se comenta
+                                obj["location"][1],# / 100,
+                                obj["location"][2],# / 100,
                             ),
                         },
                     ]
@@ -155,9 +155,9 @@ if __name__ == "__main__":
                             float(obj_pred["quaternion_xyzw"][0]),
                             float(obj_pred["quaternion_xyzw"][1]),
                             float(obj_pred["quaternion_xyzw"][2]),
-                        )
-                        * visii.angleAxis(1.57, visii.vec3(1, 0, 0)) # comentar si la prueba es con el vicon y ajustar las comas
-                        * visii.angleAxis(1.57, visii.vec3(0, 0, 1)),
+                        ),
+                        # * visii.angleAxis(1.57, visii.vec3(1, 0, 0)) # comentar si la prueba es con el vicon y ajustar las comas
+                        # * visii.angleAxis(1.57, visii.vec3(0, 0, 1)),
                         "position": visii.vec3(
                             float(str(obj_pred["location"][0])) / 100.0,
                             float(str(obj_pred["location"][1])) / 100.0,
@@ -172,9 +172,9 @@ if __name__ == "__main__":
                             float(obj_pred["quaternion_xyzw"][0]),
                             float(obj_pred["quaternion_xyzw"][1]),
                             float(obj_pred["quaternion_xyzw"][2]),
-                        )
-                        * visii.angleAxis(1.57, visii.vec3(1, 0, 0)) # aquí también
-                        * visii.angleAxis(1.57, visii.vec3(0, 0, 1)),
+                        ),
+                        # * visii.angleAxis(1.57, visii.vec3(1, 0, 0)) # aquí también
+                        # * visii.angleAxis(1.57, visii.vec3(0, 0, 1)),
                         "position": visii.vec3(
                             1000000,
                             1000000,
@@ -309,8 +309,10 @@ if __name__ == "__main__":
                     else:
                         # csv_file_gt = open(os.path.join(opt.outf, f"{f_i}-test-vertices_gt.csv"), "w+")
                         # csv_file_pred = open(os.path.join(opt.outf, f"{f_i}-test-vertices_pred.csv"), "w+")
+                        # csv_file_dist = open(os.path.join(opt.outf, f"{f_i}-dist.csv"), "w+")
                         # csv_writer_gt = csv.writer(csv_file_gt)
                         # csv_writer_pred = csv.writer(csv_file_pred)
+                        # csv_writer_dist = csv.writer(csv_file_dist)
 
                         dist = []
                         vertices = visii_gt.get_mesh().get_vertices()
@@ -321,23 +323,29 @@ if __name__ == "__main__":
                             p0 = (
                                 visii_gt.get_transform().get_local_to_world_matrix() * v
                             )
-                            csv_writer_gt.writerow(p0)
                             p1 = (
                                 visii_gu.get_transform().get_local_to_world_matrix() * v
                             )
-                            csv_writer_pred.writerow(p1)
+
+                            # Para registrar los puntos en un csv:
+                            # csv_writer_gt.writerow(p0)
+                            # csv_writer_pred.writerow(p1)
+
                             dist.append(visii.distance(p0, p1))
                         
-                        csv_file_gt.close()
-                        csv_file_pred.close()
+                        # Se cierra el csv
+                        # csv_file_gt.close()
+                        # csv_file_pred.close()
 
                         # dist_std = np.std(dist)
                         dist = np.mean(dist)
-                        
+                        # print(type(dist.tolist()))
+                        # csv_writer_dist.writerow([dist.tolist()])
                         # imprimimos mean y std para analizar las distancias
-                        # print(dist)
+                        print(dist)
                         # print(dist_std)
-                    
+                        # csv_file_dist.close()
+
                     if dist < best_dist:
                         best_dist = dist
                         best_index = i_gt

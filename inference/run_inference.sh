@@ -43,9 +43,115 @@
 #     done
 # done
 
+# fine-tunned vimba
+
+# for dirname in ../../Documents/Generated_data/connector_black_fixedpose/recorded_data/vimba_images/dataset/test/*
+#     do
+#     python inference_beliefmap.py --weights ../output/weights/connector_black_fixedpose/fine_tuning_vimba_test/net_epoch_85.pth \
+#     --data ../../Documents/Generated_data/connector_black_fixedpose/recorded_data/vimba_images/dataset/test/${dirname##*/}/ \
+#     --object 05_02_03_04_02_10_connector_black \
+#     --outf ../output/inference_results/connector_black_fixedpose/fine_tuning_vimba_test/test/${dirname##*/}/ --ext png
+# done
+
+# for dirname in ../../Documents/Generated_data/connector_black_fixedpose/recorded_data/vimba_images/dataset/test/*
+#     do
+#     python inference_beliefmap.py --weights ../output/weights/connector_black_fixedpose/fine_tuning_vimba_test2/net_epoch_117.pth \
+#     --data ../../Documents/Generated_data/connector_black_fixedpose/recorded_data/vimba_images/dataset/test/${dirname##*/}/ \
+#     --object 05_02_03_04_02_10_connector_black \
+#     --outf ../output/inference_results/connector_black_fixedpose/fine_tuning_vimba_test2/test/${dirname##*/}/ --ext png
+# done
+
+# for dirname in ../../Documents/Generated_data/connector_black_fixedpose/recorded_data/vimba_images/dataset/test/*
+#     do
+#     python inference_beliefmap.py --weights ../output/weights/connector_black_fixedpose/fine_tuning_vimba_test3/net_epoch_91.pth \
+#     --data ../../Documents/Generated_data/connector_black_fixedpose/recorded_data/vimba_images/dataset/test/${dirname##*/}/ \
+#     --object 05_02_03_04_02_10_connector_black \
+#     --outf ../output/inference_results/connector_black_fixedpose/fine_tuning_vimba_test3/test/${dirname##*/}/ --ext png
+# done
+
+
+
+# fine-tunned phone
+
+# for dirname in ../../Documents/Generated_data/connector_black_fixedpose/recorded_data/phone_images/dataset_test/vicon_gt_def/test/*
+#     do
+#     python inference_beliefmap.py --weights ../output/weights/connector_black_fixedpose/fine_tuning_phone_test/net_epoch_71.pth \
+#     --data ../../Documents/Generated_data/connector_black_fixedpose/recorded_data/phone_images/dataset/test/${dirname##*/}/ \
+#     --object 05_02_03_04_02_10_connector_black \
+#     --outf ../output/inference_results/connector_black_fixedpose/fine_tuning_phone_test/test/${dirname##*/}/ --ext jpg
+# done
+
+# for dirname in ../../Documents/Generated_data/connector_black_fixedpose/recorded_data/phone_images/dataset_test/vicon_gt_def/test/*
+#     do
+#     python inference_beliefmap.py --weights ../output/weights/connector_black_fixedpose/fine_tuning_phone_test2/net_epoch_87.pth \
+#     --data ../../Documents/Generated_data/connector_black_fixedpose/recorded_data/phone_images/dataset/test/${dirname##*/}/ \
+#     --object 05_02_03_04_02_10_connector_black \
+#     --outf ../output/inference_results/connector_black_fixedpose/fine_tuning_phone_test2/test/${dirname##*/}/ --ext jpg
+# done
+
+# for dirname in ../../Documents/Generated_data/connector_black_fixedpose/recorded_data/phone_images/dataset_test/vicon_gt_def/test/*
+#     do
+#     python inference_beliefmap.py --weights ../output/weights/connector_black_fixedpose/fine_tuning_phone_test3/net_epoch_95.pth \
+#     --data ../../Documents/Generated_data/connector_black_fixedpose/recorded_data/phone_images/dataset/test/${dirname##*/}/ \
+#     --object 05_02_03_04_02_10_connector_black \
+#     --outf ../output/inference_results/connector_black_fixedpose/fine_tuning_phone_test3/test/${dirname##*/}/ --ext jpg
+# done
+
+# sobre iluexp
+
+# python inference_beliefmap.py --weights ../output/weights/connector_black_fixedpose/fine_tuning_vimba_test/net_epoch_85.pth \
+# --data ../../Documents/Generated_data/iluexp_vimba \
+# --object 05_02_03_04_02_10_connector_black \
+# --outf ../output/inference_results/iluexp_vimba/fine_tuning_vimba_test/ --ext png
+
 
 # rad exp
-python inference_beliefmap.py --weights ../output/weights/connector_black_fixedpose/corrected_1_2_vimba/net_epoch_58.pth \
---data ../../Documents/Generated_data/connector_black_fixedpose/rad_exp/test/ \
---object 05_02_03_04_02_10_connector_black \
---outf ../output/inference_results/connector_black_fixedpose/rad_exp/no_rad/ --ext png
+# python inference_beliefmap.py --weights ../output/weights/connector_black_fixedpose/corrected_1_2_vimba/net_epoch_58.pth \
+# --data ../../Documents/Generated_data/connector_black_fixedpose/rad_exp/test/ \
+# --object 05_02_03_04_02_10_connector_black \
+# --outf ../output/inference_results/connector_black_fixedpose/rad_exp/no_rad/ --ext png
+
+
+# rad exp
+for dirname in ../../Documents/Generated_data/connector_black_fixedpose/rad_exp/Vimba/rad_exp_vimba/Gy0/*
+    do
+    python inference_beliefmap.py --weights ../output/weights/connector_black_fixedpose/fine_tuning_vimba_test3/net_epoch_91.pth \
+    --data ../../Documents/Generated_data/connector_black_fixedpose/rad_exp/Vimba/rad_exp_vimba/Gy0/${dirname##*/}/ \
+    --object 05_02_03_04_02_10_connector_black \
+    --outf ../output/inference_results/rad_exp/fine_tuning_vimba_test3/Gy0/${dirname##*/}/ --ext png
+done
+
+
+
+for dirname in ../../Documents/Generated_data/connector_black_fixedpose/rad_exp/Vimba/rad_exp_vimba/Gy1/*
+    do
+    python inference_beliefmap.py --weights ../output/weights/connector_black_fixedpose/fine_tuning_vimba_test3/net_epoch_91.pth \
+    --data ../../Documents/Generated_data/connector_black_fixedpose/rad_exp/Vimba/rad_exp_vimba/Gy1/${dirname##*/}/ \
+    --object 05_02_03_04_02_10_connector_black \
+    --outf ../output/inference_results/rad_exp/fine_tuning_vimba_test3/Gy1/${dirname##*/}/ --ext png
+done
+
+for dirname in ../../Documents/Generated_data/connector_black_fixedpose/rad_exp/Vimba/rad_exp_vimba/Gy2/*
+    do
+    python inference_beliefmap.py --weights ../output/weights/connector_black_fixedpose/fine_tuning_vimba_test3/net_epoch_91.pth \
+    --data ../../Documents/Generated_data/connector_black_fixedpose/rad_exp/Vimba/rad_exp_vimba/Gy2/${dirname##*/}/ \
+    --object 05_02_03_04_02_10_connector_black \
+    --outf ../output/inference_results/rad_exp/fine_tuning_vimba_test3/Gy2/${dirname##*/}/ --ext png
+done
+
+for dirname in ../../Documents/Generated_data/connector_black_fixedpose/rad_exp/Vimba/rad_exp_vimba/Gy3/*
+    do
+    python inference_beliefmap.py --weights ../output/weights/connector_black_fixedpose/fine_tuning_vimba_test3/net_epoch_91.pth \
+    --data ../../Documents/Generated_data/connector_black_fixedpose/rad_exp/Vimba/rad_exp_vimba/Gy3/${dirname##*/}/ \
+    --object 05_02_03_04_02_10_connector_black \
+    --outf ../output/inference_results/rad_exp/fine_tuning_vimba_test3/Gy3/${dirname##*/}/ --ext png
+done
+
+for dirname in ../../Documents/Generated_data/connector_black_fixedpose/rad_exp/Vimba/rad_exp_vimba/Gy4/*
+    do
+    python inference_beliefmap.py --weights ../output/weights/connector_black_fixedpose/fine_tuning_vimba_test3/net_epoch_91.pth \
+    --data ../../Documents/Generated_data/connector_black_fixedpose/rad_exp/Vimba/rad_exp_vimba/Gy4/${dirname##*/}/ \
+    --object 05_02_03_04_02_10_connector_black \
+    --outf ../output/inference_results/rad_exp/fine_tuning_vimba_test3/Gy4/${dirname##*/}/ --ext png
+done
+

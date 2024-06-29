@@ -138,7 +138,7 @@ def loadmodels(root, cuboid, suffix=""):
                     name=model_name + suffix,
                     path_obj=path_obj,
                     # path_tex=path_tex, # Sin texturas
-                    scale=0.01,
+                    scale=0.00001, #la escala está mal, 0.01 para YCB pero nuestos puntos están en metros, asi que hay que dividir por más
                 )
 
                 if cuboid:
